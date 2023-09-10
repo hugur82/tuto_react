@@ -2,7 +2,10 @@ import { Component } from "react";
 import classes from "./User.module.css";
 
 class User extends Component {
-  contructor() {}
+  componentWillUnmount() {
+    console.log("user will unmount");
+  }
+
   render() {
     return <li className={classes.user}>{this.props.name}</li>;
   }
