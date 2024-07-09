@@ -97,7 +97,9 @@ const CartContextProvider = ({ children }) => {
   };
 
   return (
-    <CartContext.Provider value={ctxValue}>{children}</CartContext.Provider>
+    <CartContext.Provider value={ctxValue}>
+      {children}
+    </CartContext.Provider>
   );
 };
 
