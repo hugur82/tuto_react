@@ -31,6 +31,7 @@ const Answers = ({ answers, selectedAnswer, answerState, onSelect }) => {
                 onSelect(answer);
               }}
               className={cssClasses}
+              disabled={answerState !== ""}
             >
               {answer}
             </button>
