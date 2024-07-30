@@ -1,24 +1,23 @@
-import React, { useEffect, useState } from "react";
+import useHttp from "../hooks/useHttp";
+import Error from "./Error";
 import MealItem from "./MealItem";
 
+const requestConfig = {}; // it s a pointer to avoid an infinite loop
+
 const Meals = () => {
-  const [loadedMeals, setLoadedMeals] = useState([]);
+  const {
+    data: loadedMeals,
+    isLoading,
+    error,
+  } = useHttp("http://localhost:3000/meals", requestConfig, []);
 
-  useEffect(() => {
-    async function fetchMeals() {
-      const response = await fetch("http://localhost:3000/meals");
+  if (isLoading) {
+    <p className="center">Is Loading...</p>;
+  }
 
-      if (!response.ok) {
-        //
-      }
-
-      const meals = await response.json();
-      setLoadedMeals(meals);
-    }
-
-    fetchMeals();
-  }, []);
-
+  if (error) {
+    return <Error title="Failed to fetch meals!" message={error} />;
+  }
   return (
     <ul id="meals">
       {loadedMeals.map((meal) => (
