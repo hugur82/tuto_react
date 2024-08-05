@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const PRODUCTS = [
-  { id: 1, title: "Laptop" },
-  { id: 2, title: "Smartphone" },
-  { id: 3, title: "Headphones" },
+  { id: "1", title: "Laptop" },
+  { id: "2", title: "Smartphone" },
+  { id: "3", title: "Headphones" },
 ];
 
 const ProductsPage = () => {
@@ -14,7 +14,7 @@ const ProductsPage = () => {
       <ul>
         {PRODUCTS.map((prod) => (
           <li key={prod.id}>
-            <Link to={`/products/${prod.id}`}>{prod.title}</Link>
+            <Link to={prod.id}>{prod.title}</Link>
           </li>
         ))}
       </ul>

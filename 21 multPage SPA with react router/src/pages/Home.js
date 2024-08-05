@@ -10,7 +10,7 @@ const HomePage = () => {
     <>
       <h1>Home</h1>
       <p>
-        We want to <Link to="/products">go to our products list</Link>
+        We want to <Link to="products">go to our products list</Link>
       </p>
       <button onClick={handleClick}>produit</button>
     </>
