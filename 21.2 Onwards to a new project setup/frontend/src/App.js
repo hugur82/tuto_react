@@ -22,12 +22,12 @@
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Error from "./pages/Error";
-import HomePage from "./pages/HomePage";
+import HomePage from "./pages/Home";
 import RootLayout from "./pages/Root";
-import EventsPage from "./pages/EventsPage";
-import EventDetailPage from "./pages/EventDetailPage";
-import NewEventPage from "./pages/NewEventPage";
-import EditEventPage from "./pages/EditEventPage";
+import EventsPage, { loader as eventsLoader } from "./pages/Events";
+import EventDetailPage from "./pages/EventDetail";
+import NewEventPage from "./pages/NewEvent";
+import EditEventPage from "./pages/EditEvent";
 import EventsRootLayout from "./pages/EventsRoot";
 
 function App() {
@@ -42,7 +42,11 @@ function App() {
           path: "events",
           element: <EventsRootLayout />,
           children: [
-            { index: true, element: <EventsPage /> },
+            {
+              index: true,
+              element: <EventsPage />,
+              loader: eventsLoader,
+            },
             { path: ":eventId", element: <EventDetailPage /> },
             { path: "new", element: <NewEventPage /> },
             { path: ":eventId/edit", element: <EditEventPage /> },
